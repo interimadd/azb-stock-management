@@ -1,10 +1,30 @@
 <template>
   <div id="signin">
-    <h2>サインイン</h2>
-    <!-- googleのアカウントでサインイン。アカウントがなければ新規に作成されます。 -->
-    <button @click="signInWithGoogle">Googleアカウントでサインイン</button>
+    <section class="hero has-background-light is-fullheight-with-navbar" style="background-image: url('/images/warehouse.jpg')">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-black">Login</h3>
+                    <hr class="login-hr has-background-dark">
+                    <p class="subtitle has-text-black">Please login to proceed.</p>
+                    <div class="box">
+                        <figure class="avatar">
+                            <img src="./images/google_logo.png">
+                        </figure>
+                        <form>
+                            <button class="button is-block is-info is-large is-fullwidth" @click="signInWithGoogle">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
   </div>
 </template>
+
+<style lang="scss">
+@import '~bulma';
+</style>
 
 <script>
 import firebase from "firebase"; // firebaseのインポート
