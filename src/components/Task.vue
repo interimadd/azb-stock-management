@@ -1,14 +1,14 @@
 <template>
   <div class="task">
-     <h2>タスク</h2>
+     <h2>在庫</h2>
     <div>
       <input type="text" v-model="newTodoName">
-      <button type="submit" v-on:click="createTodo()">タスク作成</button>
+      <button type="submit" v-on:click="createTodo()">入庫出庫情報追加</button>
     </div>
     <ul>
       <li><button type="submit" v-on:click="showTodoType = 'all'">すべて</button></li>
-      <li><button type="submit" v-on:click="showTodoType = 'active'">未完タスク一覧</button></li>
-      <li><button type="submit" v-on:click="showTodoType = 'complete'">完了タスク一覧</button></li>
+      <li><button type="submit" v-on:click="showTodoType = 'active'">入庫一覧</button></li>
+      <li><button type="submit" v-on:click="showTodoType = 'complete'">出庫一覧</button></li>
     </ul>
     <!-- todoの一覧表示 -->
     <ul v-for="(todo, key) in filteredTodos" :key="todo.id">
