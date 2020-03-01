@@ -74,6 +74,7 @@
             <td>{{ stock.priceYen }}</td>
             <td>{{ stock.registDate }}</td>
             <td>{{ stock.applyData }}</td>
+            <td><a class="button is-primary is-rounded is-small" v-on:click="deleteStockInfo(stock.key)">削除</a></td>
           </tr>
         </tbody>
       </table>
@@ -127,6 +128,7 @@ export default {
         count_index += 1
         stock.registDate = convert_date(stock.registDate)
         stock.applyData = convert_date(stock.applyData)
+        stock.key = key
         ret_filter_stock_info[count_index] = stock;
       }
       return ret_filter_stock_info
@@ -138,13 +140,6 @@ export default {
       if (this.newTodoName == "") {
         return;
       }
-      console.log(this.IN_or_OUT)
-      console.log(this.productName)
-      console.log(this.quantity)
-      console.log(this.priceYen)
-      console.log(this.to)
-      console.log(this.from)
-      console.log('push')
       let date = new Date()
       this.stock_DB.push({
         IN_or_OUT: this.IN_or_OUT,
@@ -156,6 +151,10 @@ export default {
         registDate: date.toISOString(),
         applyData: date.toISOString(),
       })
+    },
+    // todoの削除
+    deleteStockInfo: function(key) {
+      this.stock_DB.child(key).remove();
     }
   }
 };
