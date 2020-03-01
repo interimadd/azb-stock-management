@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Task from '@/components/Task.vue'
-import Signup from '@/components/Signup'
 import Signin from '@/components/Signin'
 import firebase from 'firebase'
  
@@ -14,11 +13,7 @@ let router =  new Router({
       path: '/',
       name: 'task',
       component: Task,
-    },
-    {
-      path: '/signup',
-      name: 'Signup',
-      component: Signup,
+      meta: { requiresAuth: true }
     },
     {
       path: '/signin',

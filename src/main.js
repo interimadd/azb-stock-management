@@ -2,7 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import firebase from 'firebase' // 追記
+import firebase from 'firebase/app'
+import 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
 
 Vue.config.productionTip = false
 
