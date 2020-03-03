@@ -9,11 +9,9 @@
                     <p class="subtitle has-text-black">Please login to proceed.</p>
                     <div class="box">
                         <figure class="avatar">
-                            <img src="./images/google_logo.png">
+                          <img src="./images/google_logo.png">
                         </figure>
-                        <form>
-                            <button class="button is-block is-info is-large is-fullwidth" @click="signInWithGoogle">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
-                        </form>
+                        <button class="button is-block is-info is-large is-fullwidth" @click="signInWithGoogle">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
@@ -31,12 +29,6 @@ import firebase from "firebase"; // firebaseのインポート
  
 export default {
   name: "Signin",
-  data() {
-    return {
-      email: "",
-      password: ""
-    };
-  },
   methods: {
     // googleでサインインするときに呼ばれるfunction
     signInWithGoogle: function() {
