@@ -30,6 +30,7 @@ export default {
     signOut: function() {
       firebase.auth().signOut()
       console.log("sing out")
+      this.$router.push("/signin")
     }
   }
 };
