@@ -11,12 +11,13 @@
                         <figure class="avatar">
                           <img src="./images/google_logo.png">
                         </figure>
-                        <button class="button is-block is-info is-large is-fullwidth" @click="signInWithGoogle">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                        <button class="button is-block is-info is-large is-fullwidth" @click="doLogin">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    {{ user }}
   </div>
 </template>
 
@@ -25,27 +26,36 @@
 </style>
 
 <script>
-import firebase from "firebase"; // firebaseのインポート
+import Firebase from '@/firebase';
  
 export default {
   name: "Signin",
+  created: function() {
+    Firebase.onAuth()
+  },
+  computed: {
+    user() {
+      return this.$store.getters.user
+    },
+    userStatus() {
+      // ログインするとtrue
+      return this.$store.getters.isSignedIn
+    }
+  },
   methods: {
-    // googleでサインインするときに呼ばれるfunction
-    signInWithGoogle: function() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then(
-          this.$router.push("/")
-         ).catch(
-          error => {
-            alert(error.message)
-          }
-        );
+    // ログイン処理
+    doLogin() {
+      const that = this
+      Firebase.login().then((res) => {
+        console.log(res)
+        that.$router.push("/");
+      })
+      .catch(function(error) {
+        console.log(error)
+       })
     }
   }
-};
+}
 </script>
  
  

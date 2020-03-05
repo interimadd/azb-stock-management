@@ -21,16 +21,25 @@
 
 
 <script>
-import firebase from "firebase"; // firebaseのインポート
+import Firebase from '@/firebase';
+import store from '@/store'
  
 export default {
   name: "HeaderBar",
+  created: function() {
+    Firebase.onAuth()
+  },
   methods: {
     // googleでサインインするときに呼ばれるfunction
     signOut: function() {
-      firebase.auth().signOut()
-      console.log("sing out")
-      this.$router.push("/signin")
+      if(store.state.status==true){
+        Firebase.logout()
+        console.log("sing out")
+        this.$router.push("/signin")
+      }
+      else{
+        console.log("not sign in")
+      }
     }
   }
 };

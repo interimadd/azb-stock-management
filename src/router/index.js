@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import StockManager from '@/components/StockManager.vue'
 import Signin from '@/components/Signin'
-import firebase from 'firebase'
+import store from '@/store'
  
 Vue.use(Router)
  
@@ -23,22 +23,20 @@ let router =  new Router({
   ]
 })
 
-// ログインが完了していない場合にサインインページの飛ばす
+// ログインが完了していない場合にサインインページに飛ばす
 router.beforeEach((to, from, next)=>{
   let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-  let currentUser = firebase.auth().currentUser
-  if (requiresAuth){
-  if (!currentUser){
-    next({
-      path: '/signin',
-      query: {redirect: to.fullPath}
-    })
-  }else{
+  if (requiresAuth==true){
+    // 未ログイン時
+    if(store.state.status==false){
+      next('/signin');
+    }else{
+      next();
+    }    
+  }
+  else{
     next()
   }
-}else{
-  next()
-}
 })
 
 export default router

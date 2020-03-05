@@ -20,6 +20,7 @@
  
 <script>
 import firebase from "firebase";
+import Firebase from '@/firebase';
  
 export default {
   name: "Task",
@@ -33,6 +34,7 @@ export default {
     };
   },
   created: function() {
+    Firebase.onAuth()
     this.database = firebase.database();
     this.uid = firebase.auth().currentUser.uid;
     this.todosRef = this.database.ref("todos/" + this.uid);
