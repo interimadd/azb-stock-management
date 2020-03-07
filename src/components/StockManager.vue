@@ -160,5 +160,6 @@ export default {
 };
 </script>
  
-<style>
+<style lang="scss">
+@import '~bulma';
 </style>
