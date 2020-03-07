@@ -17,7 +17,6 @@
             </div>
         </div>
     </section>
-    {{ user }}
   </div>
 </template>
 
@@ -32,6 +31,17 @@ export default {
   name: "Signin",
   created: function() {
     Firebase.onAuth()
+    // ログイン後、トップページに飛ばす処理を追加
+    Firebase.onAuthAdd((user)=>{
+        if(user == null){
+          return
+        }
+        this.$router.push("/")
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+    ) 
   },
   computed: {
     user() {
@@ -45,14 +55,7 @@ export default {
   methods: {
     // ログイン処理
     doLogin() {
-      const that = this
-      Firebase.login().then((res) => {
-        console.log(res)
-        that.$router.push("/");
-      })
-      .catch(function(error) {
-        console.log(error)
-       })
+      Firebase.login()
     }
   }
 }

@@ -20,7 +20,7 @@ export default {
   },
   login() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithPopup(provider)
   },
   logout() {
     firebase.auth().signOut()
@@ -31,5 +31,8 @@ export default {
       store.commit('onAuthStateChanged', user);
       store.commit('onUserStatusChanged', user.uid ? true : false);
     });
+  },
+  onAuthAdd(func) {
+    firebase.auth().onAuthStateChanged(func)
   }
 };
