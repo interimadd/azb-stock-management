@@ -117,13 +117,20 @@ export default {
     // データに変更があると実行されるfunction
     this.stock_DB.on("value", (snapshot) => {
       this.stock_info = snapshot.val(); // 再取得してstock_infoに格納する
+      console.log(this.stock_info)
     });
   },
   computed: {
     filteredStockInfo: function() {
       let count_index = 0
       let ret_filter_stock_info = {};
+      let key_list = []
       for (let key in this.stock_info) {
+        key_list.push(key)
+      }
+      key_list.reverse()
+      for (let idx in key_list) {
+        let key = key_list[idx]
         let stock = this.stock_info[key];
         count_index += 1
         stock.registDate = convert_date(stock.registDate)
