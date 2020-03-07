@@ -30,6 +30,7 @@
         <p class="control">
           <span class="select">
             <select v-model="to">
+              <option value="ダイゴ">ダイゴ</option>
               <option value="すごろくや">すごろくや</option>
               <option value="Amazon">Amazon</option>
             </select>
@@ -85,12 +86,18 @@
 <script>
 import firebase from "firebase";
 
-const convert_date = function(date_str) {
+const convert_date = function(date_str, output_year=true) {
   let date = new Date(date_str)
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
   let day = date.getDate();
-  let ret_str = year + '年' + month + '月' + day + '日'
+  let ret_str = ''
+  if(output_year==true){
+    ret_str = year + '/' + month + '/' + day
+  }
+  else{
+    ret_str = month + '/' + day
+  }
   return ret_str
 }
  
@@ -134,7 +141,7 @@ export default {
         let stock = this.stock_info[key];
         count_index += 1
         stock.registDate = convert_date(stock.registDate)
-        stock.applyData = convert_date(stock.applyData)
+        stock.applyData = convert_date(stock.applyData, false)
         stock.key = key
         ret_filter_stock_info[count_index] = stock;
       }
