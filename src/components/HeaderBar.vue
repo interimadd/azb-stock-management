@@ -6,6 +6,16 @@
     </a>
   </div>
   <div class="navbar-menu js-navbar">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">
+        <span class="icon has-text-primary"><i class="fa fa-edit"></i></span>
+        入出庫情報登録
+      </a>
+      <a class="navbar-item" href="/">
+        <span class="icon has-text-primary is-medium"><i class="fa fa-cubes"></i></span>
+        在庫確認
+      </a>
+    </div>
     <div class="navbar-end">
       <a class="navbar-item navbar-text" href="/signin">Sign In</a>
       <a class="navbar-item navbar-text" @click="signOut">Sign out</a>
@@ -17,13 +27,15 @@
 
 <style lang="scss">
 @import '~bulma';
+$fa-font-path: '~font-awesome/fonts/';
+@import '~font-awesome/scss/font-awesome';
 </style>
 
 
 <script>
 import Firebase from '@/firebase';
 import store from '@/store'
- 
+
 export default {
   name: "HeaderBar",
   created: function() {
