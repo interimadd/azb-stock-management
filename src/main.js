@@ -7,6 +7,7 @@ Vue.config.productionTip = false
 
 import Firebase from "./firebase";
 Firebase.init();
+Firebase.onAuth()
 
 Vue.config.productionTip = false;
 new Vue({

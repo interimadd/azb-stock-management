@@ -11,7 +11,7 @@
         <span class="icon has-text-primary"><i class="fa fa-edit"></i></span>
         入出庫情報登録
       </a>
-      <a class="navbar-item" href="/">
+      <a class="navbar-item" href="/checkstock">
         <span class="icon has-text-primary is-medium"><i class="fa fa-cubes"></i></span>
         在庫確認
       </a>
