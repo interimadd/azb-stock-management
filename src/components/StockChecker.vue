@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(stock, index) in filteredStockInfo" :key="stock.id">
+          <tr v-for="(stock, index) in aggregateStock" :key="stock.id">
             <th>{{index}}</th>
             <td>{{ stock.IN_or_OUT }}</td>
             <td>{{ stock.productName }}</td>
@@ -35,23 +35,7 @@
 </template>
  
 <script>
-import Firebase from '@/firebase';
 import firebase from "firebase";
-
-const convert_date = function(date_str, output_year=true) {
-  let date = new Date(date_str)
-  let year = date.getFullYear();
-  let month = date.getMonth() + 1;
-  let day = date.getDate();
-  let ret_str = ''
-  if(output_year==true){
-    ret_str = year + '/' + month + '/' + day
-  }
-  else{
-    ret_str = month + '/' + day
-  }
-  return ret_str
-}
  
 export default {
   name: "StockChecker",
@@ -69,7 +53,6 @@ export default {
     };
   },
   created: function() {
-    Firebase.onAuth()
     this.database = firebase.database();
     this.uid = firebase.auth().currentUser.uid;
     this.stock_DB = this.database.ref("stock_info/" + this.uid);
@@ -77,52 +60,46 @@ export default {
     // データに変更があると実行されるfunction
     this.stock_DB.on("value", (snapshot) => {
       this.stock_info = snapshot.val(); // 再取得してstock_infoに格納する
-      console.log(this.stock_info)
+      this.aggregateStock()
     });
   },
   computed: {
-    filteredStockInfo: function() {
-      let count_index = 0
-      let ret_filter_stock_info = {};
-      let key_list = []
+    aggregateStock: function() {
+      let place_list = []
+      let product_list = []
       for (let key in this.stock_info) {
-        key_list.push(key)
+        let product = this.stock_info[key].productName
+        let from_p = this.stock_info[key].from
+        let to_p = this.stock_info[key].to
+        if(product_list.indexOf(product)==-1){product_list.push(product)}
+        if(place_list.indexOf(from_p)==-1){place_list.push(from_p)}
+        if(place_list.indexOf(to_p)==-1){place_list.push(to_p)} 
       }
-      key_list.reverse()
-      for (let idx in key_list) {
-        let key = key_list[idx]
-        let stock = this.stock_info[key];
-        count_index += 1
-        stock.registDate = convert_date(stock.registDate)
-        stock.applyData = convert_date(stock.applyData, false)
-        stock.key = key
-        ret_filter_stock_info[count_index] = stock;
+
+      let ret_aggregate_stock_info = {}
+      for (let idx in product_list){
+        ret_aggregate_stock_info[product_list[idx]] = {}
+        for (let idx_p in place_list){
+          ret_aggregate_stock_info[product_list[idx]][place_list[idx_p]] = 0
+        }
       }
-      return ret_filter_stock_info
+
+      for (let key in this.stock_info) {
+        let product = this.stock_info[key].productName
+        let from_p = this.stock_info[key].from
+        let to_p = this.stock_info[key].to
+        let quantity = Number(this.stock_info[key].quantity)
+        console.log(product, from_p, to_p, quantity)
+        ret_aggregate_stock_info[product][from_p] -= quantity
+        ret_aggregate_stock_info[product][to_p] += quantity
+        console.log(ret_aggregate_stock_info[product])
+      }
+      console.log(ret_aggregate_stock_info)
+
+      return ret_aggregate_stock_info
     }
   },
   methods: {
-    // DBのstock_info/[uid]/以下にデータを格納していく
-    addStockInfo: function() {
-      if (this.newTodoName == "") {
-        return;
-      }
-      let date = new Date()
-      this.stock_DB.push({
-        IN_or_OUT: this.IN_or_OUT,
-        productName: this.productName,
-        quantity: this.quantity,
-        priceYen: this.priceYen,
-        from: this.from,
-        to: this.to,
-        registDate: date.toISOString(),
-        applyData: date.toISOString(),
-      })
-    },
-    // todoの削除
-    deleteStockInfo: function(key) {
-      this.stock_DB.child(key).remove();
-    }
   }
 };
 </script>

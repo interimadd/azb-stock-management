@@ -124,7 +124,6 @@ export default {
     // データに変更があると実行されるfunction
     this.stock_DB.on("value", (snapshot) => {
       this.stock_info = snapshot.val(); // 再取得してstock_infoに格納する
-      console.log(this.stock_info)
     });
   },
   computed: {
