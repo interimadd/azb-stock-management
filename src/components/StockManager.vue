@@ -1,7 +1,7 @@
 <template>
   <div class="stock_info">
     <div class="box has-text-centered">
-      <div class="field has-addons">
+      <div class="field is-horizontal">
         <p class="control">
           <span class="select">
             <select v-model="IN_or_OUT">
