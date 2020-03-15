@@ -53,28 +53,28 @@
       <table class="table is-striped is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th><abbr title="Index">Idx</abbr></th>
-            <th>入庫/出庫</th>
+            <th class="is-hidden-mobile"><abbr title="Index">Idx</abbr></th>
+            <th>入出</th>
             <th>商品名</th>
             <th>From</th>
             <th>To</th>
             <th>数量</th>
             <th>単価</th>
-            <th>登録日</th>
-            <th>反映日</th>
+            <th class="is-hidden-mobile">登録日</th>
+            <th class="is-hidden-mobile">反映日</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(stock, index) in filteredStockInfo" :key="stock.id">
-            <th>{{index}}</th>
+            <th class="is-hidden-mobile">{{index}}</th>
             <td>{{ stock.IN_or_OUT }}</td>
             <td>{{ stock.productName }}</td>
             <td>{{ stock.from }}</td>
             <td>{{ stock.to }}</td>
             <td>{{ stock.quantity }}</td>
             <td>{{ stock.priceYen }}</td>
-            <td>{{ stock.registDate }}</td>
-            <td>{{ stock.applyData }}</td>
+            <td class="is-hidden-mobile">{{ stock.registDate }}</td>
+            <td class="is-hidden-mobile">{{ stock.applyData }}</td>
             <td><a class="button is-primary is-rounded is-small" v-on:click="deleteStockInfo(stock.key)">削除</a></td>
           </tr>
         </tbody>
