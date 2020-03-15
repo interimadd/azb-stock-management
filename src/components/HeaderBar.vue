@@ -4,8 +4,15 @@
     <a href="/" class="navbar-item navbar-title">
       <p class="has-text-weight-bold">在庫管理App</p>
     </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" 
+     data-target="header-menu" @click="isOpen = !isOpen" v-bind:class="{'is-active': isOpen}">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
-  <div class="navbar-menu js-navbar">
+  <div id="header-menu" class="navbar-menu js-navbar" v-bind:class="{'is-active': isOpen}">
     <div class="navbar-start">
       <a class="navbar-item" href="/">
         <span class="icon has-text-primary"><i class="fa fa-edit"></i></span>
@@ -38,6 +45,11 @@ import store from '@/store'
 
 export default {
   name: "HeaderBar",
+  data : function() {
+    return {
+      isOpen: false
+    }
+  },
   created: function() {
     Firebase.onAuth()
   },
