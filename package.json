@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "bulma": "^0.8.0",
+    "bulma-extensions": "^6.2.7",
+    "bulma-tooltip": "^3.0.2",
     "core-js": "^3.6.4",
     "firebase": "^7.9.3",
     "font-awesome": "^4.7.0",

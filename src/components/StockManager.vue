@@ -10,16 +10,16 @@
             </select>
           </span>
         </p>
-        <p class="control">
+        <p class="control has-tooltip-primary" data-tooltip="商品名">
           <span class="select">
             <select v-model="productName">
               <option value="ソクラテスラ通常版">ソクラテスラ通常版</option>
-              <option value="ソクラテスラ拡張版～死のプレゼン～">ソクラテスラ拡張版～死のプレゼンテーション～</option>
+              <option value="ソクラテスラ拡張版～死のプレゼン～">ソクラテスラ拡張版～死のプレゼン～</option>
               <option value="ソクラテスラ拡張版～神々の宴～">ソクラテスラ拡張版～神々の宴～</option>
             </select>
           </span>
         </p>
-        <p class="control">
+        <p class="control has-tooltip-primary" data-tooltip="移動元">
           <span class="select">
             <select v-model="from">
               <option value="田中紙工">田中紙工</option>
@@ -27,7 +27,7 @@
             </select>
           </span>
         </p>
-        <p class="control">
+        <p class="control has-tooltip-primary" data-tooltip="移動先">
           <span class="select">
             <select v-model="to">
               <option value="ダイゴ">ダイゴ</option>
@@ -42,8 +42,11 @@
         <p class="control">
           <input class="input" type="text" placeholder="単価" v-model="priceYen">
         </p>
+        <p class="control has-tooltip-primary" data-tooltip="反映日">
+           <input class="input" type="date" v-model="applyData">
+        </p>
         <p class="control">
-          <a class="button" v-on:click="addStockInfo()">
+          <a class="button is-primary" v-on:click="addStockInfo()">
             追加
           </a>
         </p>
@@ -86,6 +89,10 @@
 <script>
 import firebase from "firebase";
 
+let today_date = new Date()
+let today_str = today_date.getFullYear() + '-' + ('0'+(today_date.getMonth()+1)).slice(-2) + '-' + ('0'+today_date.getDate()).slice(-2)
+console.log(today_str)
+
 const convert_date = function(date_str, output_year=true) {
   let date = new Date(date_str)
   let year = date.getFullYear();
@@ -112,6 +119,7 @@ export default {
       productName: "ソクラテスラ通常版",
       quantity: "",
       priceYen: "",
+      applyData: today_str,
       from: "田中紙工",
       to: "すごろくや"
     };
@@ -153,7 +161,6 @@ export default {
       if (this.newTodoName == "") {
         return;
       }
-      let date = new Date()
       this.stock_DB.push({
         IN_or_OUT: this.IN_or_OUT,
         productName: this.productName,
@@ -161,8 +168,8 @@ export default {
         priceYen: this.priceYen,
         from: this.from,
         to: this.to,
-        registDate: date.toISOString(),
-        applyData: date.toISOString(),
+        registDate: today_str,
+        applyData: this.applyData,
       })
     },
     // todoの削除
@@ -175,4 +182,5 @@ export default {
  
 <style lang="scss">
 @import '~bulma';
+@import '~bulma-tooltip';
 </style>
