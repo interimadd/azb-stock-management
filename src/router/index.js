@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import StockManager from '@/components/StockManager.vue'
 import StockChecker from '@/components/StockChecker.vue'
+import StockSetting from '@/components/StockSetting.vue'
 import Signin from '@/components/Signin'
 import store from '@/store'
  
@@ -20,6 +21,12 @@ let router =  new Router({
       path: '/checkstock',
       name: 'StockChecker',
       component: StockChecker,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/setting',
+      name: 'StockSetting',
+      component: StockSetting,
       meta: { requiresAuth: true }
     },
     {

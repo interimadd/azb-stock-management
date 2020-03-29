@@ -22,6 +22,10 @@
         <span class="icon has-text-primary is-medium"><i class="fa fa-cubes"></i></span>
         在庫確認
       </a>
+      <a class="navbar-item" href="/setting">
+        <span class="icon has-text-primary"><i class="fa fa-cog"></i></span>
+        項目設定
+      </a>
     </div>
     <div class="navbar-end">
       <a class="navbar-item navbar-text" href="/signin">Sign In</a>
