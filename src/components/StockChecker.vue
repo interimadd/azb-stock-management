@@ -1,6 +1,6 @@
 <template>
   <div class="stock_check">
-    <div class="container has-text-centered">
+    <div class="card">
       <table class="table is-striped is-hoverable is-fullwidth">
         <thead>
           <tr>
@@ -98,4 +98,5 @@ export default {
  
 <style lang="scss">
 @import '~bulma';
+.stock_check {padding: 20px;}
 </style>

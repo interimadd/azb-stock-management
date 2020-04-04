@@ -12,22 +12,22 @@
         </p>
         <p class="control has-tooltip-primary" data-tooltip="商品名">
           <span class="select">
-            <select v-model="productName" v-for="val in product_name_list" :key=val>
-              <option :value=val>{{val}}</option>
+            <select v-model="productName">
+              <option v-for="val in product_name_list" :key=val :value=val>{{val}}</option>
             </select>
           </span>
         </p>
         <p class="control has-tooltip-primary" data-tooltip="移動元">
-          <span class="select" v-for="val in place_name_list" :key=val>
+          <span class="select">
             <select v-model="from">
-              <option :value=val>{{val}}</option>
+              <option :value=val v-for="val in place_name_list" :key=val>{{val}}</option>
             </select>
           </span>
         </p>
         <p class="control has-tooltip-primary" data-tooltip="移動先">
-          <span class="select" v-for="val in place_name_list" :key=val>
+          <span class="select">
             <select v-model="to">
-              <option :value=val>{{val}}</option>
+              <option v-for="val in place_name_list" :key=val :value=val>{{val}}</option>
             </select>
           </span>
         </p>
