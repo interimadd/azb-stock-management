@@ -131,7 +131,6 @@ export default {
     this.database.ref("item_info/" + this.uid).once('value')
       .then((snapshot) => {
         let item_list = snapshot.val()
-        console.log(item_list)
         for(let idx in item_list){
           if(item_list[idx].type == 1){
             this.product_name_list.push(item_list[idx].itemName)
@@ -143,7 +142,16 @@ export default {
             this.from = this.place_name_list[0]
           }
         }
-        console.log(this.product_name_list)
+        let not_set_alert = "「項目設定」してください"
+        if(this.product_name_list.length == 0){
+          this.product_name_list.push(not_set_alert)
+          this.productName = not_set_alert
+        }
+        if(this.place_name_list.length == 0){
+          this.place_name_list.push(not_set_alert)
+          this.to = not_set_alert
+          this.from = not_set_alert
+        }
       })
   },
   computed: {
@@ -196,7 +204,6 @@ export default {
           this.place_name_list.push(item_list[idx].itemName)
         }
       }
-      console.log(this.place_name_list)
     }
   }
 }
