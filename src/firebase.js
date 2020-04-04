@@ -16,7 +16,7 @@ var config = {
 export default {
   init() {
     firebase.initializeApp(config);
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
   },
   login() {
     const provider = new firebase.auth.GoogleAuthProvider();
