@@ -17,17 +17,15 @@
                 </a>
               </p>
             </div>
-            <div v-for="(item) in filterProductList" :key="item.key">
-              <div class="field has-addons">
-                <p class="control is-expanded">
-                  <input class="input is-fullwidth" type="text" :value="item.itemName" readonly>
-                </p>
-                <p class="control">
-                  <a class="button is-danger" v-on:click="deleteItemInfo(item.key)">
-                    削除
-                  </a>
-                </p>
-              </div>
+            <div class="field has-addons" v-for="(item) in filterProductList" :key="item.key">
+              <p class="control is-expanded">
+                <input class="input is-fullwidth" type="text" :value="item.itemName" readonly>
+              </p>
+              <p class="control">
+                <a class="button is-danger" v-on:click="deleteItemInfo(item.key)">
+                  削除
+                </a>
+              </p>
             </div>
           </div>
         </div>
@@ -48,17 +46,15 @@
                 </a>
               </p>
             </div>
-            <div v-for="(item) in filterPlaceList" :key="item.key">
-              <div class="field has-addons">
-                <p class="control is-expanded">
-                  <input class="input is-fullwidth" type="text" :value="item.itemName" readonly>
-                </p>
-                <p class="control">
-                  <a class="button is-danger" v-on:click="deleteItemInfo(item.key)">
-                    削除
-                  </a>
-                </p>
-              </div>
+            <div class="field has-addons" v-for="(item) in filterPlaceList" :key="item.key">
+              <p class="control is-expanded">
+                <input class="input is-fullwidth" type="text" :value="item.itemName" readonly>
+              </p>
+              <p class="control">
+                <a class="button is-danger" v-on:click="deleteItemInfo(item.key)">
+                  削除
+                </a>
+              </p>
             </div>
           </div>
         </div>
