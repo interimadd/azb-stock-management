@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/components/Home.vue'
 import StockManager from '@/components/StockManager.vue'
 import StockChecker from '@/components/StockChecker.vue'
 import StockSetting from '@/components/StockSetting.vue'
@@ -13,6 +14,12 @@ let router =  new Router({
   routes: [
     {
       path: '/',
+      name: 'Home',
+      component: Home,
+      meta: { requiresAuth: false }
+    },
+    {
+      path: '/managestock',
       name: 'StockManager',
       component: StockManager,
       meta: { requiresAuth: true }
@@ -32,7 +39,8 @@ let router =  new Router({
     {
       path: '/signin',
       name: 'Signin',
-      component: Signin
+      component: Signin,
+      meta: { requiresAuth: false }
     }
   ]
 })

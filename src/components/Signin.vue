@@ -36,7 +36,7 @@ export default {
         if(user == null){
           return
         }
-        this.$router.push("/")
+        this.$router.push("/managestock")
           .catch((error) => {
             console.log(error)
           })
@@ -60,7 +60,3 @@ export default {
   }
 }
 </script>
- 
- 
-<style>
-</style>
