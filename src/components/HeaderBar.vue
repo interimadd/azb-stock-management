@@ -14,7 +14,7 @@
   </div>
   <div id="header-menu" class="navbar-menu js-navbar" v-bind:class="{'is-active': isOpen}">
     <div class="navbar-start">
-      <a class="navbar-item" href="/">
+      <a class="navbar-item" href="/managestock">
         <span class="icon has-text-primary"><i class="fa fa-edit"></i></span>
         入出庫情報登録
       </a>
