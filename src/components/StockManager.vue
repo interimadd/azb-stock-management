@@ -32,10 +32,10 @@
               </select>
             </span>
           </p>
-          <p class="control">
+          <p class="control  has-tooltip-primary" data-tooltip="個数">
             <input class="input" type="text" placeholder="個数" v-model="quantity">
           </p>
-          <p class="control">
+          <p class="control  has-tooltip-primary" data-tooltip="単価">
             <input class="input" type="text" placeholder="単価" v-model="priceYen">
           </p>
           <p class="control has-tooltip-primary" data-tooltip="反映日">
