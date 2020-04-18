@@ -1,50 +1,52 @@
 <template>
   <div class="stock_info">
-    <div class="box has-text-centered">
-      <div class="field is-horizontal">
-        <p class="control">
-          <span class="select">
-            <select v-model="IN_or_OUT">
-              <option>入庫</option>
-              <option>出庫</option>
-            </select>
-          </span>
-        </p>
-        <p class="control has-tooltip-primary" data-tooltip="商品名">
-          <span class="select">
-            <select v-model="productName">
-              <option v-for="val in product_name_list" :key=val :value=val>{{val}}</option>
-            </select>
-          </span>
-        </p>
-        <p class="control has-tooltip-primary" data-tooltip="移動元">
-          <span class="select">
-            <select v-model="from">
-              <option :value=val v-for="val in place_name_list" :key=val>{{val}}</option>
-            </select>
-          </span>
-        </p>
-        <p class="control has-tooltip-primary" data-tooltip="移動先">
-          <span class="select">
-            <select v-model="to">
-              <option v-for="val in place_name_list" :key=val :value=val>{{val}}</option>
-            </select>
-          </span>
-        </p>
-        <p class="control">
-          <input class="input" type="text" placeholder="個数" v-model="quantity">
-        </p>
-        <p class="control">
-          <input class="input" type="text" placeholder="単価" v-model="priceYen">
-        </p>
-        <p class="control has-tooltip-primary" data-tooltip="反映日">
-           <input class="input" type="date" v-model="applyData">
-        </p>
-        <p class="control">
-          <a class="button is-primary" v-on:click="addStockInfo()">
-            追加
-          </a>
-        </p>
+    <div class="box">
+      <div class="container has-text-centered">
+        <div class="field is-horizontal">
+          <p class="control">
+            <span class="select">
+              <select v-model="IN_or_OUT">
+                <option>入庫</option>
+                <option>出庫</option>
+              </select>
+            </span>
+          </p>
+          <p class="control has-tooltip-primary" data-tooltip="商品名">
+            <span class="select">
+              <select v-model="productName">
+                <option v-for="val in product_name_list" :key=val :value=val>{{val}}</option>
+              </select>
+            </span>
+          </p>
+          <p class="control has-tooltip-primary" data-tooltip="移動元">
+            <span class="select">
+              <select v-model="from">
+                <option :value=val v-for="val in place_name_list" :key=val>{{val}}</option>
+              </select>
+            </span>
+          </p>
+          <p class="control has-tooltip-primary" data-tooltip="移動先">
+            <span class="select">
+              <select v-model="to">
+                <option v-for="val in place_name_list" :key=val :value=val>{{val}}</option>
+              </select>
+            </span>
+          </p>
+          <p class="control">
+            <input class="input" type="text" placeholder="個数" v-model="quantity">
+          </p>
+          <p class="control">
+            <input class="input" type="text" placeholder="単価" v-model="priceYen">
+          </p>
+          <p class="control has-tooltip-primary" data-tooltip="反映日">
+            <input class="input" type="date" v-model="applyData">
+          </p>
+          <p class="control">
+            <a class="button is-primary" v-on:click="addStockInfo()">
+              追加
+            </a>
+          </p>
+        </div>
       </div>
     </div>
     <div class="container has-text-centered">
