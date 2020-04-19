@@ -21,14 +21,14 @@
           <p class="control has-tooltip-primary" data-tooltip="移動元">
             <span class="select">
               <select v-model="from">
-                <option :value=val v-for="val in place_name_list" :key=val>{{val}}</option>
+                <option :value=val v-for="val in from_name_list" :key=val>{{val}}</option>
               </select>
             </span>
           </p>
           <p class="control has-tooltip-primary" data-tooltip="移動先">
             <span class="select">
               <select v-model="to">
-                <option v-for="val in place_name_list" :key=val :value=val>{{val}}</option>
+                <option v-for="val in to_name_list" :key=val :value=val>{{val}}</option>
               </select>
             </span>
           </p>
@@ -119,7 +119,9 @@ export default {
       from: "",
       to: "",
       product_name_list: [],
-      place_name_list: []
+      place_name_list: [],
+      from_name_list: [],
+      to_name_list: []
     }
   },
   created: function() {
@@ -133,27 +135,7 @@ export default {
     this.database.ref("item_info/" + this.uid).once('value')
       .then((snapshot) => {
         let item_list = snapshot.val()
-        for(let idx in item_list){
-          if(item_list[idx].type == 1){
-            this.product_name_list.push(item_list[idx].itemName)
-            this.productName = this.product_name_list[0]
-          }
-          else if(item_list[idx].type == 2){
-            this.place_name_list.push(item_list[idx].itemName)
-            this.to = this.place_name_list[0]
-            this.from = this.place_name_list[0]
-          }
-        }
-        let not_set_alert = "「項目設定」してください"
-        if(this.product_name_list.length == 0){
-          this.product_name_list.push(not_set_alert)
-          this.productName = not_set_alert
-        }
-        if(this.place_name_list.length == 0){
-          this.place_name_list.push(not_set_alert)
-          this.to = not_set_alert
-          this.from = not_set_alert
-        }
+        this.parseItemList(item_list)
       })
   },
   computed: {
@@ -205,6 +187,37 @@ export default {
         else if(item_list[idx].type == 2){
           this.place_name_list.push(item_list[idx].itemName)
         }
+      }
+    },
+    parseItemList: function(item_list) {
+      for(let idx in item_list){
+        if(item_list[idx].type == 1){
+          this.product_name_list.push(item_list[idx].itemName)
+          this.productName = this.product_name_list[0]
+        }
+        else if(item_list[idx].type == 2){
+          if(item_list[idx].itemType == "仕入れ先" || item_list[idx].itemType == "在庫管理場所"){
+            this.from_name_list.push(item_list[idx].itemName)
+            this.from = this.from_name_list[0]
+          }
+          if(item_list[idx].itemType == "販売先" || item_list[idx].itemType == "在庫管理場所"){
+            this.to_name_list.push(item_list[idx].itemName)
+            this.to = this.to_name_list[0]
+          }
+        }
+      }
+      let not_set_alert = "「項目設定」してください"
+      if(this.product_name_list.length == 0){
+        this.product_name_list.push(not_set_alert)
+        this.productName = not_set_alert
+      }
+      if(this.from_name_list.length == 0){
+        this.from_name_list.push(not_set_alert)
+        this.from = not_set_alert
+      }
+      if(this.to_name_list.length == 0){
+        this.to_name_list.push(not_set_alert)
+        this.to = not_set_alert
       }
     }
   }
