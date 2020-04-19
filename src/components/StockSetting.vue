@@ -9,7 +9,7 @@
             </p>
             <div class="field has-addons">
               <p class="control is-expanded">
-                <input class="input is-fullwidth" type="text" placeholder="商品名" v-model="productName">
+                <input class="input" type="text" placeholder="商品名" v-model="product_name">
               </p>
               <p class="control">
                 <a class="button is-primary" v-on:click="addProductInfo()">
@@ -19,7 +19,7 @@
             </div>
             <div class="field has-addons" v-for="(item) in filterProductList" :key="item.key">
               <p class="control is-expanded">
-                <input class="input is-fullwidth" type="text" :value="item.itemName" readonly>
+                <input class="input" type="text" :value="item.itemName" readonly>
               </p>
               <p class="control">
                 <a class="button is-danger" v-on:click="deleteItemInfo(item.key)">
@@ -36,9 +36,18 @@
             <p class="title">
               場所リスト
             </p>
-           <div class="field has-addons">
+            <div class="field has-addons">
+              <p class="control">
+                <span class="select">
+                  <select v-model=place_type>
+                    <option>仕入れ先</option>
+                    <option>在庫管理場所</option>
+                    <option>販売先</option>
+                  </select>
+                </span>
+              </p>
               <p class="control is-expanded">
-                <input class="input is-fullwidth" type="text" placeholder="場所名" v-model="placeName">
+                <input class="input" type="text" placeholder="場所名" v-model="plcae_name">
               </p>
               <p class="control">
                 <a class="button is-primary" v-on:click="addPlaceInfo()">
@@ -48,7 +57,10 @@
             </div>
             <div class="field has-addons" v-for="(item) in filterPlaceList" :key="item.key">
               <p class="control is-expanded">
-                <input class="input is-fullwidth" type="text" :value="item.itemName" readonly>
+                <input class="input" type="text" :value="item.itemType" readonly>
+              </p>
+              <p class="control is-expanded">
+                <input class="input" type="text" :value="item.itemName" readonly>
               </p>
               <p class="control">
                 <a class="button is-danger" v-on:click="deleteItemInfo(item.key)">
@@ -76,8 +88,9 @@ export default {
       database: null,
       item_DB: null,
       item_list: [],
-      productName: "",
-      placeName: ""
+      product_name: "",
+      plcae_name: "",
+      place_type: "仕入れ先"
     };
   },
   created: function() {
@@ -103,16 +116,17 @@ export default {
     addProductInfo: function() {
       this.item_DB.push({
         type: PRODUCT_NAME,
-        itemName: this.productName,
+        itemName: this.product_name,
       })
-      this.productName = ""
+      this.product_name = ""
     },
     addPlaceInfo: function() {
       this.item_DB.push({
         type: PLACE_NAME,
-        itemName: this.placeName,
+        itemName: this.plcae_name,
+        itemType: this.place_type
       })
-      this.placeName = ""
+      this.plcae_name = ""
     },
     deleteItemInfo: function(key) {
       this.item_DB.child(key).remove();
