@@ -3,14 +3,6 @@
     <div class="box">
       <div class="container has-text-centered">
         <div class="field is-horizontal">
-          <p class="control">
-            <span class="select">
-              <select v-model="IN_or_OUT">
-                <option>入庫</option>
-                <option>出庫</option>
-              </select>
-            </span>
-          </p>
           <p class="control has-tooltip-primary" data-tooltip="商品名">
             <span class="select">
               <select v-model="productName">
@@ -111,7 +103,6 @@ export default {
       database: null,
       stock_DB: null,
       stock_info: [],
-      IN_or_OUT: "入庫",
       productName: "",
       quantity: "",
       priceYen: "",
@@ -121,7 +112,10 @@ export default {
       product_name_list: [],
       place_name_list: [],
       from_name_list: [],
-      to_name_list: []
+      to_name_list: [],
+      stocking_place_list: [],
+      warehouse_place_list: [],
+      seller_place_list: []
     }
   },
   created: function() {
@@ -163,7 +157,7 @@ export default {
     // DBのstock_info/[uid]/以下にデータを格納していく
     addStockInfo: function() {
       this.stock_DB.push({
-        IN_or_OUT: this.IN_or_OUT,
+        IN_or_OUT: this.checkInputOrOutput(this.from, this.to),
         productName: this.productName,
         quantity: this.quantity,
         priceYen: this.priceYen,
@@ -189,6 +183,19 @@ export default {
         }
       }
     },
+    checkInputOrOutput: function(from_place, to_place) {
+      let is_from_stocking_place = (this.stocking_place_list.indexOf(from_place) >= 0)  // 仕入れ先からか来たものか？
+      let is_to_warehouse_place = (this.warehouse_place_list.indexOf(to_place) >= 0)  // 倉庫に入っていくか？
+      if(is_from_stocking_place==true && is_to_warehouse_place==true){
+        return "入庫"
+      }
+      let is_from_warehouse_place = (this.warehouse_place_list.indexOf(from_place) >= 0)  // 倉庫から出ていくか？
+      let is_to_seller_place = (this.seller_place_list.indexOf(to_place) >= 0)  // 販売先に出ていくか？
+      if(is_from_warehouse_place==true && is_to_seller_place==true){
+        return "出庫"
+      }
+      return "-"
+    },
     parseItemList: function(item_list) {
       for(let idx in item_list){
         if(item_list[idx].type == 1){
@@ -196,28 +203,35 @@ export default {
           this.productName = this.product_name_list[0]
         }
         else if(item_list[idx].type == 2){
-          if(item_list[idx].itemType == "仕入れ先" || item_list[idx].itemType == "在庫管理場所"){
-            this.from_name_list.push(item_list[idx].itemName)
-            this.from = this.from_name_list[0]
-          }
-          if(item_list[idx].itemType == "販売先" || item_list[idx].itemType == "在庫管理場所"){
-            this.to_name_list.push(item_list[idx].itemName)
-            this.to = this.to_name_list[0]
-          }
+          if(item_list[idx].itemType == "仕入れ先"){this.stocking_place_list.push(item_list[idx].itemName)}
+          if(item_list[idx].itemType == "在庫管理場所"){this.warehouse_place_list.push(item_list[idx].itemName)}
+          if(item_list[idx].itemType == "販売先"){this.seller_place_list.push(item_list[idx].itemName)}
         }
       }
+      this.from_name_list = this.warehouse_place_list.concat(this.stocking_place_list)
+      this.to_name_list = this.warehouse_place_list.concat(this.seller_place_list)
+      // 未設定時の処理
       let not_set_alert = "「項目設定」してください"
       if(this.product_name_list.length == 0){
         this.product_name_list.push(not_set_alert)
         this.productName = not_set_alert
       }
+      else{
+        this.productName = this.product_name_list[0]
+      }
       if(this.from_name_list.length == 0){
         this.from_name_list.push(not_set_alert)
         this.from = not_set_alert
       }
+      else{
+        this.from = this.from_name_list[0]
+      }
       if(this.to_name_list.length == 0){
         this.to_name_list.push(not_set_alert)
         this.to = not_set_alert
+      }
+      else{
+        this.to = this.to_name_list[0]
       }
     }
   }
