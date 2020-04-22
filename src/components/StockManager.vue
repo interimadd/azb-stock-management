@@ -78,21 +78,15 @@
 <script>
 import firebase from "firebase"
 
-let today_date = new Date()
-let today_str = today_date.getFullYear() + '-' + ('0'+(today_date.getMonth()+1)).slice(-2) + '-' + ('0'+today_date.getDate()).slice(-2)
+const today_date = new Date()
+const today_str = today_date.getFullYear() + '-' + ('0'+(today_date.getMonth()+1)).slice(-2) + '-' + ('0'+today_date.getDate()).slice(-2)
 
 const convert_date = function(date_str, output_year=true) {
-  let date = new Date(date_str)
-  let year = date.getFullYear()
-  let month = date.getMonth() + 1
-  let day = date.getDate()
-  let ret_str = ''
-  if(output_year==true){
-    ret_str = year + '/' + month + '/' + day
-  }
-  else{
-    ret_str = month + '/' + day
-  }
+  const date = new Date(date_str)
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const ret_str = output_year ? `${year}/${month}/${day}` : `${month}/${day}`
   return ret_str
 }
  
@@ -128,7 +122,7 @@ export default {
     })
     this.database.ref("item_info/" + this.uid).once('value')
       .then((snapshot) => {
-        let item_list = snapshot.val()
+        const item_list = snapshot.val()
         this.parseItemList(item_list)
       })
   },
@@ -142,8 +136,8 @@ export default {
       }
       key_list.reverse()
       for (let idx in key_list) {
-        let key = key_list[idx]
-        let stock = this.stock_info[key]
+        const key = key_list[idx]
+        const stock = this.stock_info[key]
         count_index += 1
         stock.registDate = convert_date(stock.registDate)
         stock.applyData = convert_date(stock.applyData, false)
@@ -184,13 +178,13 @@ export default {
       }
     },
     checkInputOrOutput: function(from_place, to_place) {
-      let is_from_stocking_place = (this.stocking_place_list.indexOf(from_place) >= 0)  // 仕入れ先からか来たものか？
-      let is_to_warehouse_place = (this.warehouse_place_list.indexOf(to_place) >= 0)  // 倉庫に入っていくか？
+      const is_from_stocking_place = (this.stocking_place_list.indexOf(from_place) >= 0)  // 仕入れ先からか来たものか？
+      const is_to_warehouse_place = (this.warehouse_place_list.indexOf(to_place) >= 0)  // 倉庫に入っていくか？
       if(is_from_stocking_place==true && is_to_warehouse_place==true){
         return "入庫"
       }
-      let is_from_warehouse_place = (this.warehouse_place_list.indexOf(from_place) >= 0)  // 倉庫から出ていくか？
-      let is_to_seller_place = (this.seller_place_list.indexOf(to_place) >= 0)  // 販売先に出ていくか？
+      const is_from_warehouse_place = (this.warehouse_place_list.indexOf(from_place) >= 0)  // 倉庫から出ていくか？
+      const is_to_seller_place = (this.seller_place_list.indexOf(to_place) >= 0)  // 販売先に出ていくか？
       if(is_from_warehouse_place==true && is_to_seller_place==true){
         return "出庫"
       }
@@ -211,7 +205,7 @@ export default {
       this.from_name_list = this.warehouse_place_list.concat(this.stocking_place_list)
       this.to_name_list = this.warehouse_place_list.concat(this.seller_place_list)
       // 未設定時の処理
-      let not_set_alert = "「項目設定」してください"
+      const not_set_alert = "「項目設定」してください"
       if(this.product_name_list.length == 0){
         this.product_name_list.push(not_set_alert)
         this.productName = not_set_alert

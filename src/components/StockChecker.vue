@@ -51,9 +51,9 @@ export default {
       let place_list = []
       let product_list = []
       for (let key in this.stock_info) {
-        let product = this.stock_info[key].productName
-        let from_p = this.stock_info[key].from
-        let to_p = this.stock_info[key].to
+        const product = this.stock_info[key].productName
+        const from_p = this.stock_info[key].from
+        const to_p = this.stock_info[key].to
         if(product_list.indexOf(product)==-1){product_list.push(product)}
         if(place_list.indexOf(from_p)==-1){place_list.push(from_p)}
         if(place_list.indexOf(to_p)==-1){place_list.push(to_p)} 
@@ -64,9 +64,9 @@ export default {
       let place_list = []
       let product_list = []
       for (let key in this.stock_info) {
-        let product = this.stock_info[key].productName
-        let from_p = this.stock_info[key].from
-        let to_p = this.stock_info[key].to
+        const product = this.stock_info[key].productName
+        const from_p = this.stock_info[key].from
+        const to_p = this.stock_info[key].to
         if(product_list.indexOf(product)==-1){product_list.push(product)}
         if(place_list.indexOf(from_p)==-1){place_list.push(from_p)}
         if(place_list.indexOf(to_p)==-1){place_list.push(to_p)} 
@@ -81,10 +81,10 @@ export default {
       }
 
       for (let key in this.stock_info) {
-        let product = this.stock_info[key].productName
-        let from_p = this.stock_info[key].from
-        let to_p = this.stock_info[key].to
-        let quantity = Number(this.stock_info[key].quantity)
+        const product = this.stock_info[key].productName
+        const from_p = this.stock_info[key].from
+        const to_p = this.stock_info[key].to
+        const quantity = Number(this.stock_info[key].quantity)
         ret_aggregate_stock_info[product][from_p] -= quantity
         ret_aggregate_stock_info[product][to_p] += quantity
       }
