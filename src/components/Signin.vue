@@ -9,7 +9,7 @@
                     <p class="subtitle has-text-black">Please login to proceed.</p>
                     <div class="box">
                         <figure class="avatar">
-                          <img src="./images/google_logo.png">
+                          <img src="/google_logo.png">
                         </figure>
                         <button class="button is-block is-info is-large is-fullwidth" @click="doLogin">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                     </div>
