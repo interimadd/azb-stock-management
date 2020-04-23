@@ -11,7 +11,7 @@ var config = {
     messagingSenderId: "261885111708",
     appId: "1:261885111708:web:bb90ba1f95ce74f4d16c59",
     measurementId: "G-TGKF1EL9S2"
-  };
+  }
 
 export default {
   init() {
@@ -30,7 +30,7 @@ export default {
       user = user ? user : {};
       store.commit('onAuthStateChanged', user);
       store.commit('onUserStatusChanged', user.uid ? true : false);
-    });
+    })
   },
   onAuthAdd(func) {
     firebase.auth().onAuthStateChanged(func)

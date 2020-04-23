@@ -68,6 +68,12 @@
 
       <footer class="footer">
         <nav class="level">
+          <div class="level-item has-text-centered">
+            <a class="button is-dark"  href="https://github.com/interimadd/azb-stock-management">
+              <span class="icon"><i class="fa fa-lg fa-github"></i></span>
+              <span>Github</span>
+            </a>
+          </div>
           <div class="level-item">
             <div>
               <div><strong>製作者</strong> <a href="https://twitter.com/interimadd">@interimadd</a></div>
@@ -92,7 +98,7 @@ export default {
   methods:{
     twitterShare(){
       const tweet_content = "-同人サークルのためのクラウド在庫管理システム- 在庫管理App%0a"
-      let shareURL = 'https://twitter.com/intent/tweet?text=' + tweet_content + '&url=' + "https://azb-stock-management.firebaseapp.com";  
+      let shareURL = 'https://twitter.com/intent/tweet?text=' + tweet_content + '&url=' + "https://stock-management.interimadd.com/";  
       location.href = shareURL
     }
   }
