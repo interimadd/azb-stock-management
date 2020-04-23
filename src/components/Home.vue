@@ -3,10 +3,10 @@
     <div class="section1">
       <div class="columns is-desktop">
         <div class="column is-offset-1">
-          <div class="has-text-weight-bold has-text-white is-size-3">同人サークル<span class="is-size-4">のための</span></div>
-          <p class="has-text-weight-bold has-text-white is-size-3">クラウド在庫管理システム</p>
-          <div class="has-text-white is-size-5">必要最小限のシンプルなWebアプリ</div>
-          <div class="has-text-white is-size-5">ブラウザからインストール不要で使えます</div>
+          <div class="has-text-weight-bold has-text-white is-size-3-tablet is-size-5-mobile">同人サークル<span class="is-size-4-tablet">のための</span></div>
+          <p class="has-text-weight-bold has-text-white is-size-3-tablet is-size-5-mobile">クラウド在庫管理システム</p>
+          <div class="has-text-white is-size-5-tablet">必要最小限のシンプルなWebアプリ</div>
+          <div class="has-text-white is-size-5-tablet">ブラウザからインストール不要で使えます</div>
           <div>.</div>
           <a class="button is-primary is-rounded has-text-weight-bold" href="/signin">使ってみる</a>
         </div>
@@ -17,43 +17,44 @@
       </div>
     </div>
     <div class="container has-text-centered line_margin">
-        <h1 class="has-text-weight-bold is-size-3">— 在庫管理Appの特徴 —</h1>
+        <h1 class="has-text-weight-bold is-size-3-tablet">— 在庫管理Appの特徴 —</h1>
         <br>
         <div class="columns is-mobile is-centered">
           <div class="column is-2-desktop">
-            <div class="is-size-4 has-text-weight-bold">簡単在庫管理</div>
+            <div class="is-size-4-tablet has-text-weight-bold">簡単在庫管理</div>
             <img src="/stock_icon.png"/>
           </div>
           <div class="column is-2-desktop">
-            <div class="is-size-4 has-text-weight-bold">どこでも使える</div>
+            <div class="is-size-4-tablet has-text-weight-bold">どこでも使える</div>
             <img src="/cloud_icon.png"/>
           </div>
           <div class="column is-2-desktop">
-            <div class="is-size-4 has-text-weight-bold">完全無料</div>
+            <div class="is-size-4-tablet has-text-weight-bold">完全無料</div>
             <img src="/free_icon.png"/>
           </div>
         </div>
         <br>
-        <p class="has-text-weight-bold has-text-primary is-size-3">面倒な在庫管理が簡単に！</p>
-        <div class="is-size-5">今までスプレッドシートで管理していた印刷所への発注やイベントでの販売個数等の情報を、簡単な操作でミス無く管理できます</div>
-        <div class="is-size-5">Googleやtwitterの共通アカウントを使って、メンバーの誰でも同じ情報にアクセスできます</div>
+        <p class="has-text-weight-bold has-text-primary is-size-3-tablet">面倒な在庫管理が簡単に！</p>
+        <br>
+        <div class="is-size-5-tablet">今までスプレッドシートで管理していた印刷所への発注やイベントでの販売個数等の情報を、簡単な操作でミス無く管理できます</div>
+        <div class="is-size-5-tablet">Googleやtwitterの共通アカウントを使って、メンバーの誰でも同じ情報にアクセスできます</div>
         <br>
         
-        <div class="is-size-4 has-text-weight-bold">シンプルな入庫/出庫履歴の管理</div>
-        <div class="is-size-5">あらかじめ登録しておいた商品名や場所の情報を参照し、最小限の情報を入力するだけで、入庫/出庫の情報を登録することができます</div>
-        <div class="is-size-5">登録した情報は新しい順番にリストで表示されます</div>
+        <div class="is-size-4-tablet has-text-weight-bold">シンプルな入庫/出庫履歴の管理</div>
+        <div class="is-size-5-tablet">あらかじめ登録しておいた商品名や場所の情報を参照し、最小限の情報を入力するだけで、入庫/出庫の情報を登録することができます</div>
+        <div class="is-size-5-tablet">登録した情報は新しい順番にリストで表示されます</div>
         <img src="/input_sample.gif"/>
 
-        <div class="is-size-4 has-text-weight-bold">在庫数の確認</div>
-        <div class="is-size-5">入庫/出庫の履歴から在庫がどこにいくつあるのかを自動で集計し、一覧を確認することができます</div>
-        <div class="is-size-5">今までに作ったものがいくつ売れたのかを確認するのにも役立ちます</div>
+        <div class="is-size-4-tablet has-text-weight-bold">在庫数の確認</div>
+        <div class="is-size-5-tablet">入庫/出庫の履歴から在庫がどこにいくつあるのかを自動で集計し、一覧を確認することができます</div>
+        <div class="is-size-5-tablet">今までに作ったものがいくつ売れたのかを確認するのにも役立ちます</div>
         <img src="/count_sample.png"/>
         <br>
         
-        <p class="has-text-weight-bold has-text-primary is-size-3">PCでもスマホでも利用できる！</p>
+        <p class="has-text-weight-bold has-text-primary is-size-3-tablet">PCでもスマホでも利用できる！</p>
         <br>
-        <div class="is-size-5">ウェブブラウザを使って外出先からでも簡単にアクセスできます</div>
-        <div class="is-size-5">レスポンシブデザイン対応で、パソコンでもスマートフォンでも同じ機能を使うことができます</div>
+        <div class="is-size-5-tablet">ウェブブラウザを使って外出先からでも簡単にアクセスできます</div>
+        <div class="is-size-5-tablet">レスポンシブデザイン対応で、パソコンでもスマートフォンでも同じ機能を使うことができます</div>
         <img src="/responsive_sample.gif"/>
         <br>
 
@@ -115,10 +116,6 @@ img {
 }
 
 .section1{
-  /*レイアウト用のCSS*/
-  padding: 50px;
-}
-.section1{
   position: relative;
  
   /*レイアウト用のCSS*/
@@ -140,8 +137,23 @@ img {
   border-color: transparent transparent #fff transparent;
 }
 
-.line_margin{
-  line-height: 40px
+// 画面サイズの幅が768px以上のときのみ適用
+@media screen and (min-width: 768px) {
+  .line_margin {
+    line-height: 40px
+  }
+  .section1{
+    /*レイアウト用のCSS*/
+    padding: 50px;
+  }
+}
+
+// 画面サイズの幅が768px以上のときのみ適用
+@media screen and (max-width: 768px) {
+  .section1{
+    /*レイアウト用のCSS*/
+    padding: 20px;
+  }
 }
 
 footer {
