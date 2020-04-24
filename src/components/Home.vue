@@ -58,7 +58,7 @@
         <img src="/responsive_sample.gif"/>
         <br>
 
-        <a class="columns is-mobile is-centered" href="/signin">
+        <a class="columns is-centered" href="/signin">
           <div class="column is-half">
             <div class="button is-primary is-rounded is-large is-fullwidth has-text-weight-bold">使ってみる</div>
           </div>
@@ -132,7 +132,7 @@ img {
  
   /*ここで三角形のサイズを決める。
   必ず幅100vwにして、ブラウザサイズいっぱいにしてください。*/
-  border-width: 0 0 100px 120vw ;
+  border-width: 0 0 80px 100vw ;
  
   border-color: transparent transparent #fff transparent;
 }
