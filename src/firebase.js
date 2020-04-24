@@ -4,7 +4,7 @@ import store from "./store";
 
 var config = {
     apiKey: "AIzaSyBUvbQwBGnQbie3kY39WjOl3dehF9uFryY",
-    authDomain: "azb-stock-management.firebaseapp.com",
+    authDomain: "stock-management.interimadd.com",
     databaseURL: "https://azb-stock-management.firebaseio.com",
     projectId: "azb-stock-management",
     storageBucket: "azb-stock-management.appspot.com",
