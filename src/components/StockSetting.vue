@@ -4,25 +4,25 @@
       <div class="column">
         <div class="card">
           <div class="card-content">
-            <p class="title">
+            <p class="title is-size-5-mobile">
               商品名リスト
             </p>
             <div class="field has-addons">
               <p class="control is-expanded">
-                <input class="input" type="text" placeholder="商品名" v-model="product_name">
+                <input class="input is-size-7-mobile" type="text" placeholder="商品名" v-model="product_name">
               </p>
               <p class="control">
-                <a class="button is-primary" v-on:click="addProductInfo()">
+                <a class="button is-primary is-size-7-mobile" v-on:click="addProductInfo()">
                   追加
                 </a>
               </p>
             </div>
             <div class="field has-addons" v-for="(item) in filterProductList" :key="item.key">
               <p class="control is-expanded">
-                <input class="input" type="text" :value="item.itemName" readonly>
+                <input class="input is-size-7-mobile" type="text" :value="item.itemName" readonly>
               </p>
               <p class="control">
-                <a class="button is-danger" v-on:click="deleteItemInfo(item.key)">
+                <a class="button is-danger is-size-7-mobile" v-on:click="deleteItemInfo(item.key)">
                   削除
                 </a>
               </p>
@@ -33,12 +33,12 @@
       <div class="column">
         <div class="card">
           <div class="card-content">
-            <p class="title">
+            <p class="title is-size-5-mobile">
               場所リスト
             </p>
             <div class="field has-addons">
               <p class="control">
-                <span class="select">
+                <span class="select is-size-7-mobile">
                   <select v-model=place_type>
                     <option>仕入れ先</option>
                     <option>在庫管理場所</option>
@@ -47,23 +47,23 @@
                 </span>
               </p>
               <p class="control is-expanded">
-                <input class="input" type="text" placeholder="場所名" v-model="plcae_name">
+                <input class="input is-size-7-mobile" type="text" placeholder="場所名" v-model="plcae_name">
               </p>
               <p class="control">
-                <a class="button is-primary" v-on:click="addPlaceInfo()">
+                <a class="button is-primary is-size-7-mobile" v-on:click="addPlaceInfo()">
                   追加
                 </a>
               </p>
             </div>
             <div class="field has-addons" v-for="(item) in filterPlaceList" :key="item.key">
               <p class="control is-expanded">
-                <input class="input" type="text" :value="item.itemType" readonly>
+                <input class="input is-size-7-mobile" type="text" :value="item.itemType" readonly>
               </p>
               <p class="control is-expanded">
-                <input class="input" type="text" :value="item.itemName" readonly>
+                <input class="input is-size-7-mobile" type="text" :value="item.itemName" readonly>
               </p>
               <p class="control">
-                <a class="button is-danger" v-on:click="deleteItemInfo(item.key)">
+                <a class="button is-danger is-size-7-mobile" v-on:click="deleteItemInfo(item.key)">
                   削除
                 </a>
               </p>
