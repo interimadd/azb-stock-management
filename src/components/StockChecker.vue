@@ -1,7 +1,7 @@
 <template>
   <div class="stock_check">
     <div class="card">
-      <table class="table is-striped is-hoverable is-fullwidth">
+      <table class="table is-striped is-hoverable is-fullwidth is-size-7-mobile">
         <thead>
           <tr>
             <th><abbr title="Index">Product</abbr></th>

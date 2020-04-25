@@ -41,12 +41,12 @@
         <br>
         
         <div class="is-size-4-tablet has-text-weight-bold">シンプルな入庫/出庫履歴の管理</div>
-        <div class="is-size-5-tablet">あらかじめ登録しておいた商品名や場所の情報を参照し、最小限の情報を入力するだけで、入庫/出庫の情報を登録することができます</div>
+        <div class="is-size-5-tablet">あらかじめ登録しておいた商品名や場所の情報を参照し、最小限の情報を入力するだけで、入庫/出庫の情報を登録できます</div>
         <div class="is-size-5-tablet">登録した情報は新しい順番にリストで表示されます</div>
         <img src="/input_sample.gif"/>
 
         <div class="is-size-4-tablet has-text-weight-bold">在庫数の確認</div>
-        <div class="is-size-5-tablet">入庫/出庫の履歴から在庫がどこにいくつあるのかを自動で集計し、一覧を確認することができます</div>
+        <div class="is-size-5-tablet">入庫/出庫の履歴から在庫がどこにいくつあるのかを自動で集計し、一覧を確認できます</div>
         <div class="is-size-5-tablet">今までに作ったものがいくつ売れたのかを確認するのにも役立ちます</div>
         <img src="/count_sample.png"/>
         <br>
@@ -54,7 +54,7 @@
         <p class="has-text-weight-bold has-text-primary is-size-3-tablet">PCでもスマホでも利用できる！</p>
         <br>
         <div class="is-size-5-tablet">ウェブブラウザを使って外出先からでも簡単にアクセスできます</div>
-        <div class="is-size-5-tablet">レスポンシブデザイン対応で、パソコンでもスマートフォンでも同じ機能を使うことができます</div>
+        <div class="is-size-5-tablet">レスポンシブデザイン対応で、パソコンでもスマートフォンでも同じ機能が使えます</div>
         <img src="/responsive_sample.gif"/>
         <br>
 
