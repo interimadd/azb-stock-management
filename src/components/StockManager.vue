@@ -2,7 +2,14 @@
   <div class="stock_info">
     <div class="box">
       <div class="container has-text-centered">
-        <div class="field is-horizontal">
+        <a class="button is-hidden-tablet" v-bind:class="{'is-danger': is_show_edit_view}"
+         v-on:click="is_show_edit_view = !is_show_edit_view">
+          <span class="icon">
+            <i class="fa" v-bind:class="{'fa-angle-down': !is_show_edit_view, 'fa-angle-up': is_show_edit_view}"></i>
+          </span>
+          <span>入出庫情報編集</span>
+        </a>
+        <div class="field is-horizontal" v-bind:class="{'is-hidden-mobile': !is_show_edit_view}">
           <p class="control has-tooltip-primary" data-tooltip="商品名">
             <span class="select">
               <select v-model="productName">
@@ -41,7 +48,7 @@
         </div>
       </div>
     </div>
-    <div class="container has-text-centered">
+    <div class="container has-text-centered is-size-7-mobile">
       <table class="table is-striped is-hoverable is-fullwidth">
         <thead>
           <tr>
@@ -67,7 +74,11 @@
             <td>{{ stock.priceYen }}</td>
             <td class="is-hidden-mobile">{{ stock.registDate }}</td>
             <td class="is-hidden-mobile">{{ stock.applyData }}</td>
-            <td><a class="button is-primary is-rounded is-small" v-on:click="deleteStockInfo(stock.key)">削除</a></td>
+            <td><a class="button is-primary is-rounded is-small" v-on:click="deleteStockInfo(stock.key)" 
+                 v-bind:class="{'is-hidden-mobile': !is_show_edit_view}">
+                 削除
+                </a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -109,7 +120,8 @@ export default {
       to_name_list: [],
       stocking_place_list: [],
       warehouse_place_list: [],
-      seller_place_list: []
+      seller_place_list: [],
+      is_show_edit_view: false
     }
   },
   created: function() {
